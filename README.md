@@ -5,7 +5,7 @@ Fiercely quick front-end boilerplate and workflows.
 
 The opinionated FastShell framework. Built for the modern developer. For teams and the individual, encouraging a better workflow. JavaScript task running, build processes, autominification and file concatenation, wrapped with an enhanced HTML5 boilerplated framework.
 
-* Source: [github.com/athreepik/FastShell](http://github.com/athreepik/FastShell)
+* Source: [github.com/athreepik/fastshell](http://github.com/athreepik/fastshell)
 
 ## Project setup and Gulp installation
 FastShell utilises open source components running on the Terminal/command-line for it's workflow, you'll need to install Node and Gulp. Here's a walkthrough of how to get a project up and running in minutes. Once Node and Gulp are installed all future projects running Gulp are instant.
@@ -41,6 +41,7 @@ Here are some of the main features of FastShell:
 * Livereloading the browser and file injection upon changes
 * Annotated Gulpfile.js for extending
 * Built-in build script for auto-minification of CSS and JavaScript files for production
+* Minify PNG, JPEG and GIF images
 * Pre-setup Sass/SCSS files and folders for baseline project structure and imports
 * Includes .editorconfig for consistent coding styles in IDEs
 * Standard .gitignore to ignore minified files and standard ignorables such as .DS_Store
