@@ -1,0 +1,36 @@
+{
+  "name": "fastshell",
+  "title": "Fiercely quick and opinionated front-ends",
+  "url": "http://getfastshell.com",
+  "author": "Hossein Karami",
+  "copyright": "2014",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/athreepik/fastshell.git"
+  },
+  "devDependencies": {
+    "bower": "~1.2.6",
+    "gulp-concat": "~2.1.7",
+    "gulp": "~3.5.0",
+    "gulp-uglify": "~0.2.0",
+    "gulp-util": "~2.2.12",
+    "gulp-autoprefixer": "0.0.5",
+    "gulp-ruby-sass": "~0.2.0",
+    "gulp-livereload": "~0.2.0",
+    "tiny-lr": "0.0.5",
+    "open": "0.0.4",
+    "connect": "~2.12.0",
+    "connect-livereload": "~0.3.2",
+    "gulp-imagemin": "~0.1.4",
+    "gulp-rename": "~0.2.2",
+    "gulp-bower": "0.0.2",
+    "gulp-bower-files": "~0.1.3",
+    "gulp-jshint": "~1.3.4",
+    "gulp-cache": "~0.1.1"
+  },
+  "scripts": {
+    "postinstall": "bower install"
+  }
+}
