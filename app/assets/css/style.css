@@ -58,7 +58,6 @@ body, html {
   font-weight: normal;
   font-style: normal;
 }
-
 ::selection {
   background: #333;
   color: #fff;
@@ -126,8 +125,7 @@ body, html {
 
   @page {
     margin: 0.5cm;
-}
-
+  }
   p,
   h2,
   h3 {
