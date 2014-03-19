@@ -1,5 +1,5 @@
 # FastShell
-[![Dependency Status][depstat-image]][depstat-url]
+[![Build Status](https://travis-ci.org/HosseinKarami/fastshell.png?branch=master)](https://travis-ci.org/HosseinKarami/fastshell)[![Dependency Status](https://david-dm.org/HosseinKarami/fastshell.svg?theme=shields.io)](https://david-dm.org/HosseinKarami/fastshell)
 inspired by [FireShell](http://getfireshell.com)
 Fiercely quick front-end boilerplate and workflows.
 
