@@ -58,6 +58,11 @@ body, html {
   font-weight: normal;
   font-style: normal;
 }
+::-moz-selection {
+  background: #333;
+  color: #fff;
+  text-shadow: none;
+}
 ::selection {
   background: #333;
   color: #fff;
