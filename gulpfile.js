@@ -1,11 +1,12 @@
 var gulp = require('gulp'),
-    sass = require('gulp-ruby-sass'),
+    sass = require('gulp-sass'),
     browserSync = require('browser-sync'),
     autoprefixer = require('gulp-autoprefixer'),
     uglify = require('gulp-uglify'),
     jshint = require('gulp-jshint'),
     header  = require('gulp-header'),
     rename = require('gulp-rename'),
+    minifyCSS = require('gulp-minify-css'),
     package = require('./package.json');
 
 
@@ -23,10 +24,10 @@ var banner = [
 
 gulp.task('css', function () {
     return gulp.src('src/scss/style.scss')
-    .pipe(sass({ style: 'expanded' }))
-    .pipe(autoprefixer('last 15 version'))
+    .pipe(sass())
+    .pipe(autoprefixer('last 4 version'))
     .pipe(gulp.dest('app/assets/css'))
-    .pipe(sass({ style: 'compressed' }))
+    .pipe(minifyCSS())
     .pipe(rename({ suffix: '.min' }))
     .pipe(header(banner, { package : package }))
     .pipe(gulp.dest('app/assets/css'))
