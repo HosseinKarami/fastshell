@@ -9,7 +9,7 @@
 
 * {
   -moz-box-sizing: border-box;
-  box-sizing: border-box;
+       box-sizing: border-box;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility; }
 
@@ -22,7 +22,7 @@ body {
   font: 300 13px/1.6 'Helvetica Neue', Helvetica, Arial;
   color: #444;
   -webkit-transition: all 0.4s 0.3s ease-in;
-  transition: all 0.4s 0.3s ease-in; }
+          transition: all 0.4s 0.3s ease-in; }
 
 body, html {
   min-height: 100vh;
