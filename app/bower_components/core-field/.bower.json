@@ -1,0 +1,17 @@
+{
+  "name": "core-field",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master"
+  },
+  "homepage": "https://github.com/Polymer/core-field",
+  "_release": "c84a67c094",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "c84a67c0947bcb8f16f209de9eeae05072ea972e"
+  },
+  "_source": "git://github.com/Polymer/core-field.git",
+  "_target": "master",
+  "_originalSource": "Polymer/core-field"
+}

@@ -1,0 +1,17 @@
+{
+  "name": "core-tests",
+  "private": true,
+  "dependencies": {
+    "polymer-test-tools": "Polymer/polymer-test-tools#master"
+  },
+  "homepage": "https://github.com/Polymer/core-tests",
+  "_release": "2526ae011d",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2526ae011d81457a1b3ada5a8bb22edda740678d"
+  },
+  "_source": "git://github.com/Polymer/core-tests.git",
+  "_target": "master",
+  "_originalSource": "Polymer/core-tests"
+}

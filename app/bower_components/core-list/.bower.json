@@ -1,0 +1,18 @@
+{
+  "name": "core-list",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master",
+    "core-selection": "Polymer/core-selection#master"
+  },
+  "homepage": "https://github.com/Polymer/core-list",
+  "_release": "d063e5a5f8",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "d063e5a5f81c3d0f2a4054506bffff6e6e27e4a4"
+  },
+  "_source": "git://github.com/Polymer/core-list.git",
+  "_target": "master",
+  "_originalSource": "Polymer/core-list"
+}

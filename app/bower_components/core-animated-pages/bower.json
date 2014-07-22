@@ -1,0 +1,9 @@
+{
+  "name": "core-animated-pages",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master",
+    "core-selector": "Polymer/core-selector#master",
+    "core-transition": "Polymer/core-transition#master"
+  }
+}

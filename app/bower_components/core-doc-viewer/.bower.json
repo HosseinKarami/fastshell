@@ -1,0 +1,27 @@
+{
+  "name": "core-doc-viewer",
+  "private": true,
+  "dependencies": {
+    "core-ajax": "Polymer/core-ajax#master",
+    "core-layout": "Polymer/core-layout#master",
+    "core-menu": "Polymer/core-menu#master",
+    "core-item": "Polymer/core-item#master",
+    "core-toolbar": "Polymer/core-toolbar#master",
+    "core-icons": "Polymer/core-icons#master",
+    "core-icon-button": "Polymer/core-icon-button#master",
+    "core-header-panel": "Polymer/core-header-panel#master",
+    "context-free-parser": "Polymer/context-free-parser#master",
+    "marked-element": "PolymerLabs/marked-element#master",
+    "highlightjs-element": "PolymerLabs/highlightjs-element#master"
+  },
+  "homepage": "https://github.com/Polymer/core-doc-viewer",
+  "_release": "28cce537dc",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "28cce537dc48efef2141677a1f227be006644460"
+  },
+  "_source": "git://github.com/Polymer/core-doc-viewer.git",
+  "_target": "master",
+  "_originalSource": "Polymer/core-doc-viewer"
+}

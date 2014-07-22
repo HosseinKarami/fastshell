@@ -1,0 +1,16 @@
+{
+  "name": "core-input",
+  "dependencies": {
+    "polymer": "Polymer/polymer#master"
+  },
+  "homepage": "https://github.com/Polymer/core-input",
+  "_release": "fbda98eda3",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "fbda98eda3dc483aa7e6846c90f23d63b7a83952"
+  },
+  "_source": "git://github.com/Polymer/core-input.git",
+  "_target": "master",
+  "_originalSource": "Polymer/core-input"
+}

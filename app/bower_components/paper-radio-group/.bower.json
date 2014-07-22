@@ -1,0 +1,19 @@
+{
+  "name": "paper-radio-group",
+  "private": true,
+  "dependencies": {
+    "core-selector": "Polymer/core-selector#master",
+    "font-roboto": "Polymer/font-roboto#master",
+    "paper-radio-button": "Polymer/paper-radio-button#master"
+  },
+  "homepage": "https://github.com/Polymer/paper-radio-group",
+  "_release": "2cc718285f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2cc718285f31da1ccd88612940fb1bb4e282062f"
+  },
+  "_source": "git://github.com/Polymer/paper-radio-group.git",
+  "_target": "master",
+  "_originalSource": "Polymer/paper-radio-group"
+}

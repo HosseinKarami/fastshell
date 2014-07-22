@@ -1,0 +1,8 @@
+{
+  "name": "core-layout",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master"
+  },
+  "version": "0.3.0"
+}

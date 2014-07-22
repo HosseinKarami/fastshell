@@ -1,0 +1,17 @@
+{
+  "name": "core-layout-trbl",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master"
+  },
+  "homepage": "https://github.com/Polymer/core-layout-trbl",
+  "_release": "486b0c6306",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "486b0c6306bb81828b00a8d1773d0415e9b6e588"
+  },
+  "_source": "git://github.com/Polymer/core-layout-trbl.git",
+  "_target": "master",
+  "_originalSource": "Polymer/core-layout-trbl"
+}

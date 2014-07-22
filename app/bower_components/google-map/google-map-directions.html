@@ -1,0 +1,92 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE
+The complete set of authors may be found at http://polymer.github.io/AUTHORS
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<polymer-element name="google-map-directions" attributes="map startAddress endAddress travelMode response">
+  <template>
+    <style>
+      :host {
+        display: none;
+      }
+    </style>
+  </template>
+  <script>
+    Polymer('google-map-directions', {
+      // google.maps.Map instance
+      map: null,
+      startAddress: '',
+      endAddress: '',
+      startLocation: null,
+      endLocation: null,
+      // DRIVING, WALKING, BICYCLING, TRANSIT
+      travelMode: 'DRIVING',
+      observe: {
+        startLocation: 'route',
+        endLocation: 'route',
+        travelMode: 'route'
+      },
+      mapChanged: function() {
+        if (this.map && this.map instanceof google.maps.Map) {
+          this.mapReady();
+        }
+      },
+      mapReady: function() {
+        this.directionsService = new google.maps.DirectionsService();
+        this.directionsRenderer = new google.maps.DirectionsRenderer();
+        this.directionsRenderer.setMap(this.map);
+        this.startAddressChanged();
+        this.endAddressChanged();
+      },
+      startAddressChanged: function() {
+        if (!this.directionsService || !this.startAddress) {
+          return;
+        }
+        this.addressToLocation(this.startAddress, function(loc) {
+          this.startLocation = loc;
+        }.bind(this));
+      },
+      endAddressChanged: function() {
+        if (!this.directionsService || !this.endAddress) {
+          return;
+        }
+        this.addressToLocation(this.endAddress, function(loc) {
+          this.endLocation = loc;
+        }.bind(this));
+      },
+      addressToLocation: function(address, callback) {
+        var geo = new google.maps.Geocoder();
+        geo.geocode({'address': address}, function(results, status) {
+          var loc;
+          if (status === google.maps.GeocoderStatus.OK) {
+            loc = results[0].geometry.location;
+          }
+          callback(loc);
+        }.bind(this));
+      },
+      route: function() {
+        if (!this.map || !this.startLocation || !this.endLocation) {
+          return;
+        }
+        var request = {
+          origin: this.startLocation,
+          destination: this.endLocation,
+          optimizeWaypoints: true,
+          travelMode: this.travelMode
+        };
+        this.directionsService.route(request, function(response, status) {
+          if (status == google.maps.DirectionsStatus.OK) {
+            this.directionsRenderer.setDirections(response);
+            this.response = response;
+          }
+        }.bind(this));
+      }
+    });
+  </script>
+</polymer-element>

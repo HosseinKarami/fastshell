@@ -1,0 +1,460 @@
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../google-apis/google-apis.html">
+
+<!--
+The `google-map-marker` element represents a map marker. It is used as a
+child of `google-map`.
+
+<b>Example</b>:
+
+    <google-map latitude="37.77493" longitude="-122.41942">
+      <google-map-marker latitude="37.779" longitude="-122.3892"
+          title="Go Giants!"></google-map-marker>
+    </google-map>
+
+<b>Example</b> - a draggable marker:
+
+    <google-map-marker latitude="37.77493" longitude="-122.41942"
+         draggable="true"></google-map-marker>
+
+<b>Example</b> - hide a marker:
+
+    <google-map-marker latitude="37.77493" longitude="-122.41942"
+        hidden></google-map-marker>
+
+@element google-map-marker
+@status alpha
+@homepage github.io
+-->
+<polymer-element name="google-map-marker" attributes="icon">
+<script>
+  (function() {
+
+    Polymer('google-map-marker', {
+
+      /**
+       * A Google Maps marker object.
+       *
+       * @property marker
+       * @type google.maps.Marker
+       * @default null
+       */
+      marker: null,
+
+      /**
+       * The Google map object.
+       *
+       * @property map
+       * @type google.maps.Map
+       * @default null
+       */
+      map: null,
+
+      /**
+       * Image URL for the marker icon.
+       *
+       * @attribute icon
+       * @type string
+       * @default null
+       */
+      icon: null,
+
+      publish: {
+        /**
+         * The marker's longitude coordinate.
+         *
+         * @attribute longitude
+         * @type number
+         * @default null
+         */
+        longitude: {value: null, reflect: true},
+        
+        /**
+         * The marker's latitude coordinate.
+         *
+         * @attribute latitude
+         * @type number
+         * @default null
+         */
+        latitude: {value: null, reflect: true}
+      },
+
+      iconChanged: function() {
+        if (this.marker) {
+          this.marker.setIcon(this.icon);
+        }
+      },
+
+      mapChanged: function() {
+        if (this.map && this.map instanceof google.maps.Map) {
+          this.mapReady();
+        }
+      },
+
+      mapReady: function() {
+        this.marker = new google.maps.Marker({
+          map: this.map,
+          position: new google.maps.LatLng(this.latitude, this.longitude),
+          title: this.title,
+          draggable: this.draggable,
+          visible: !this.hidden,
+          icon: this.icon
+        });
+
+        setupDragHandler_.bind(this)();
+      },
+
+      attributeChanged: function(attrName, oldVal, newVal) {
+        if (!this.marker) {
+          return;
+        }
+
+        // Cannot use *Changed watchers for native properties.
+        switch (attrName) {
+          case 'hidden':
+            this.marker.setVisible(!this.hidden);
+            break;
+          case 'draggable':
+            this.marker.setDraggable(this.draggable);
+            setupDragHandler_.bind(this)();
+            break;
+          case 'title':
+            this.marker.setTitle(this.title);
+            break;
+        }
+      }
+
+    });
+
+    function onDragEnd_(e, details, sender) {
+      this.latitude = e.latLng.lat();
+      this.longitude = e.latLng.lng();
+    }
+    
+    function setupDragHandler_() {
+      if (this.draggable) {
+        this.dragHandler_ = google.maps.event.addListener(
+            this.marker, 'dragend', onDragEnd_.bind(this));
+      } else {
+        google.maps.event.removeListener(this.dragHandler_);
+        this.dragHandler_ = null;
+      }
+    }
+
+  })();
+
+</script>
+</polymer-element>
+
+<!--
+The `google-map` element renders a Google Map.
+
+<b>Example</b>:
+
+    <style>
+      google-map {
+        display: block;
+        height: 600px;
+      }
+    </style>
+    <google-map latitude="37.77493" longitude="-122.41942"></google-map>
+
+<b>Example</b> - add markers to the map and ensure they're in view:
+
+    <google-map latitude="37.77493" longitude="-122.41942" fitToMarkers>
+      <google-map-marker latitude="37.779" longitude="-122.3892"
+          draggable="true" title="Go Giants!"></google-map-marker>
+      <google-map-marker latitude="37.777" longitude="-122.38911"></google-map-marker>
+    </google-map>
+
+<b>Example</b>:
+
+    <google-map disableDefaultUI showCenterMarker zoom="15"></google-map>
+    <script>
+      var map = document.querySelector('google-map');
+      map.latitude = 37.77493;
+      map.longitude = -122.41942;
+      map.addEventListener('google-map-ready', function(e) {
+        alert('Map loaded!');
+      });
+    </script>
+
+<b>Example</b> - with Google directions, using data-binding inside another Polymer element
+
+    <google-map map="{{map}}"></google-map>
+    <google-map-directions map="{{map}}"
+        startAddress="San Francisco" endAddress="Mountain View">
+    </google-map-directions>
+
+@element google-map
+@homepage github.io
+@blurb Element wrapper around Google Maps API.
+-->
+<!--
+Fired when the Maps API has fully loaded.
+
+@event google-map-ready
+-->
+
+<!-- TODO(ericbidelman):
+- Handle removals and support .innerHTML = ''.
+- Use <google-maps-api>.api instead of google.maps namespace.
+-->
+<polymer-element name="google-map" attributes="apiKey latitude longitude zoom showCenterMarker version sensor map mapType disableDefaultUI fitToMarkers">
+<template>
+
+  <style>
+  
+    :host {
+      position: relative;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    
+  </style>
+
+  <google-maps-api apiKey="{{apiKey}}" version="{{version}}" sensor="{{sensor}}" on-api-load="{{mapApiLoaded}}"></google-maps-api>
+
+  <div id="map"></div>
+
+  <content id="markers" select="google-map-marker"></content>
+  
+</template>
+<script>
+
+  Polymer('google-map', {
+
+    /**
+     * A Maps API key. To obtain an API key, see developers.google.com/maps/documentation/javascript/tutorial#api_key.
+     *
+     * @property apiKey
+     * @type string
+     */
+    apiKey: null,
+
+    /**
+     * A latitude to center the map on.
+     *
+     * @attribute latitude
+     * @type number
+     * @default 37.77493
+     */
+    latitude: 37.77493,
+
+    /**
+     * A longitude to center the map on.
+     *
+     * @attribute longitude
+     * @type number
+     * @default -122.41942
+     */
+    longitude: -122.41942,
+
+    /**
+     * A zoom level to set the map to.
+     *
+     * @attribute zoom
+     * @type number
+     * @default 10
+     */
+    zoom: 10,
+
+    /**
+     * When set, displays a map marker at the center point.
+     *
+     * @attribute showCenterMarker
+     * @type boolean
+     * @default false
+     */
+    showCenterMarker: false,
+
+    /**
+     * Map type to display. One of 'roadmap', 'satellite', 'hybrid', 'terrain'.
+     *
+     * @attribute mapType
+     * @type string
+     * @default roadmap
+     */
+    mapType: 'roadmap', // roadmap, satellite, hybrid, terrain
+    
+    /**
+     * Version of the Google Maps API to use.
+     *
+     * @attribute version
+     * @type string
+     * @default 3.exp
+     */
+    version: '3.exp',
+
+    /**
+     * If set, indicates a sensor (such as a GPS locator) was used to determine the user's location.
+     *
+     * @attribute sensor
+     * @type boolean
+     * @default false
+     */
+    sensor: false,
+
+    /**
+     * If set, removes the map's default UI controls.
+     *
+     * @attribute disableDefaultUI
+     * @type boolean
+     * @default false
+     */
+    disableDefaultUI: false,
+
+    /**
+     * If set, the zoom level is set such that all markers (google-map-marker children) are brought into view.
+     *
+     * @attribute fitToMarkers
+     * @type boolean
+     * @default false
+     */
+    fitToMarkers: false,
+    
+    observe: {
+      latitude: 'updateCenter',
+      longitude: 'updateCenter'
+    },
+
+    created: function() {
+      this.markers = [];
+    },
+    
+    attached: function() {
+      this.resize();
+    },
+    
+    mapApiLoaded: function() {
+      this.map = new google.maps.Map(this.$.map, {
+        zoom: this.zoom,
+        mapTypeId: this.mapType,
+        disableDefaultUI: this.disableDefaultUI
+      });
+
+      this.updateCenter();
+      this.updateMarkers();
+
+      this.fire('google-map-ready');      
+    },
+
+    updateMarkers: function() {
+      this.markers = Array.prototype.slice.call(
+          this.$.markers.getDistributedNodes());
+      
+      this.onMutation(this, this.updateMarkers); // Watch for future updates.
+
+      // Set the map on each marker and zoom viewport to ensure they're in view. 
+      if (this.markers.length && this.map) {
+        for (var i = 0, m; m = this.markers[i]; ++i) {
+          m.map = this.map;
+        }
+
+        if (this.fitToMarkers) {
+          this.fitToMarkersChanged();
+        }
+      }
+    },
+
+    /**
+     * Clears all markers from the map.
+     *
+     * @method clear
+     */
+    clear: function() {
+      for (var i = 0, m; m = this.markers[i]; ++i) {
+        m.marker.setMap(null);
+      }
+    },
+    
+    resize: function() {
+      if (this.map) {
+        google.maps.event.trigger(this.map, 'resize');
+        this.updateCenter();
+      }
+    },
+    
+    updateCenter: function() {
+      if (!this.map || !this.latitude || !this.longitude || 
+          typeof this.latitude === 'object' || 
+          typeof this.longitude === 'object') {
+        return;
+      }
+      this.map.panTo(
+          new google.maps.LatLng(this.latitude, this.longitude));
+      this.showCenterMarkerChanged();
+    },
+    
+    zoomChanged: function() {
+      if (this.map) {
+        this.map.setZoom(Number(this.zoom));
+      }
+    },
+    
+    mapTypeChanged: function() {
+      if (this.map) {
+        this.map.setMapTypeId(this.mapType);
+      }
+    },
+    
+    showCenterMarkerChanged: function() {
+      if (!this.map) {
+        return;
+      }
+      if (!this.centerMarker && this.showCenterMarker) {
+        this.centerMarker = new google.maps.Marker({
+          map: this.map
+        });
+      }
+      if (this.centerMarker) {
+        this.centerMarker.setPosition(this.map.getCenter());
+        this.centerMarker.setMap(this.showCenterMarker ? this.map : null);
+      }
+    },
+    
+    disableDefaultUIChanged: function() {
+      if (!this.map) {
+        return;
+      }
+      this.map.setOptions({disableDefaultUI: this.disableDefaultUI});
+    },
+
+    fitToMarkersChanged: function() {
+      // TODO(ericbidelman): respect user's zoom level.
+
+      if (this.map && this.fitToMarkers) { 
+        var latLngBounds = new google.maps.LatLngBounds();
+        for (var i = 0, m; m = this.markers[i]; ++i) {
+          latLngBounds.extend(
+              new google.maps.LatLng(m.latitude, m.longitude));
+        }
+
+        // For one marker, don't alter zoom, just center it.
+        if (this.markers.length > 1) {
+          this.map.fitBounds(latLngBounds);
+        }
+        
+        this.map.setCenter(latLngBounds.getCenter());
+      }
+    }
+    
+  });
+  
+</script>
+</polymer-element>

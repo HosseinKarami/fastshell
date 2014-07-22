@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<html>
+  <head>
+    <title>Google Map</title>
+    <script src="../platform/platform.js"></script>
+    <link rel="import" href="google-map.html">
+    <link rel="import" href="google-map-directions.html">
+    <style>
+      body, html {
+        height: 100%;
+        margin: 0;
+      }
+      google-map {
+        display: block;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <google-map latitude="37.779" longitude="-122.3892" disableDefaultUI>
+      <google-map-marker latitude="37.779" longitude="-122.3892"
+                         title="Go Giants!" draggable="true"></google-map-marker>
+    </google-map>
+    <google-map-directions startAddress="San Francisco" endAddress="Mountain View"></google-map-directions>
+
+    <script>
+      var gmap = document.querySelector('google-map');
+      gmap.addEventListener('api-load', function(e) {
+        document.querySelector('google-map-directions').map = this.map;
+      });
+    </script>
+  </body>
+</html>

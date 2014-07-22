@@ -1,0 +1,17 @@
+{
+  "name": "core-tooltip",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master"
+  },
+  "homepage": "https://github.com/Polymer/core-tooltip",
+  "_release": "325096a2d3",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "325096a2d3f5be75b8cefc5797397d827845f633"
+  },
+  "_source": "git://github.com/Polymer/core-tooltip.git",
+  "_target": "master",
+  "_originalSource": "Polymer/core-tooltip"
+}

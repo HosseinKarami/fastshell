@@ -1,0 +1,7 @@
+{
+  "name": "core-ajax",
+  "private": true,
+  "dependencies": {
+    "polymer": "Polymer/polymer#master"
+  }
+}
