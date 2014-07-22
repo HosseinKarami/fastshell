@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width, minimal-ui">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>FastShell: HTML5, Sass and JavaScript boilerplate for Gulp, by @_Karamii</title>
+  <link rel="stylesheet" href="app/assets/css/app.min.css" shim-shadowdom>
+  <script src="app/bower_components/platform/platform.js"></script>
+  <link rel="import" href="app/elements.html">
+</head>
+<body unresolved>
+<main>
+  <x-card z="0" id="head">
+    <paper-ripple fit></paper-ripple>
+    <header>
+      <div class="logo">
+        <a href="/"><img src="app/assets/img/logo.png" width="168" height="67" alt="Logo"></a>
+      </div>
+      <ul>
+        <li><a href="https://github.com/HosseinKarami/fastshell" target="_blank"><paper-button id="btn" label="Source"></paper-button></a></li>
+        <li><a href="https://github.com/HosseinKarami/fastshell/blob/master/docs/DOCS.md" target="_blank"><paper-button id="btn" label="Documentation"></paper-button></a></li>
+      </ul>
+      <h5>FastShell, fiercely quick front-end boilerplate and workflows</h5>
+      <div class="download">
+        <a href="https://github.com/HosseinKarami/fastshell/archive/v1.0.0.zip"><paper-button id="download" iconSrc="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" label="Download v1.0.0"></paper-button></a>
+        <div class="git">
+          <input value="git clone https://github.com/HosseinKarami/fastshell.git" data-select="">
+        </div>
+      </div>
+      <p>FastShell Nightly build, inspired by <a href="//github.com/toddmotto/fireshell" target="_blank">FireShell</a></p>
+    </header>
+  </x-card>
+  <x-card z="0" id="main">
+    <section>
+      <h1>The opinionated FastShell framework. Built for the modern developer. For teams and the individual, encouraging a better workflow. JavaScript task running, build processes, autominification and file concatenation, wrapped with an enhanced HTML5 boilerplated framework.</h1>
+      <div class="row">
+        <div class="rows">
+          <img src="app/assets/img/html5.png" alt="">
+          <h2 class="beta">HTML5 Boilerplated</h2>
+          <p>
+            A cutting edge take on the HTML5 boilerplate with some HTML5 semantics and WAI-ARIA roles
+            for baseline semantic markup and web accessibility.
+          </p>
+        </div>
+        <div class="rows">
+          <img src="app/assets/img/sass.png" alt="">
+          <h2 class="beta">Sass OOCSS setup</h2>
+          <p>
+            CSS structure for small projects and scaling big, a fantastic setup to
+            get your Object-Orientated CSS scaling. Ships with fully adaptive folder hierarchies.
+          </p>
+        </div>
+        <div class="rows">
+          <img src="app/assets/img/gulp.png" alt="" height="138">
+          <h2 class="beta">Gulpjs</h2>
+          <p>
+            Compiling Sass/SCSS, concatenating JavaScript files, connecting to a localhost server and live file reloads and injection. Auto-minification for production.
+          </p>
+        </div>
+      </div>
+    </section>
+  </x-card>
+  <x-card z="0" id="feature">
+    <section>
+      <h2>Top Features</h2>
+      <ul>
+        <li>HTML5 framework, WAI-ARIA roles and HTML5 semantics</li>
+        <li>Baseline HTML5 features, DNS prefetching, responsive meta</li>
+        <li>Encourages one-file CSS/JS in the view (HTML) for performance</li>
+        <li>Includes jQuery CDN and relative fallback</li>
+        <li>Includes Modernizr and HTML5 Shiv</li>
+        <li>Google Universal Analytics snippet</li>
+        <li>Open source workflow with Gulpjs running on Node.js</li>
+        <li>A gulp.command file for double-click command-line execution</li>
+        <li>Automatic Gulp dependency installation, directory relocation and gulp tasks</li>
+        <li>Dynamically appended copyright for JS/CSS</li>
+        <li>Livereloading the browser and file injection upon changes</li>
+        <li>Annotated Gulpfile.js for extending</li>
+        <li>Built-in build script for auto-minification of CSS and JavaScript files for production</li>
+        <li>Pre-setup Sass/SCSS files and folders for baseline project structure and imports</li>
+        <li>Includes .editorconfig for consistent coding styles in IDEs</li>
+        <li>Standard .gitignore to ignore minified files and standard ignorables such as .DS_Store</li>
+        <li>JSHint .jshintrc file for configuring JavaScript linting</li>
+        <li>No superfluous code comments</li>
+      </ul>
+    </section>
+  </x-card>
+</main>
+<script src="app/assets/js/scripts.min.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-53057207-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

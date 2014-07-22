@@ -1,0 +1,22 @@
+{
+  "name": "PolymerExperiment",
+  "version": "0.0.0",
+  "authors": [
+    "Hossein Karami <athreepik@gmail.com>"
+  ],
+  "description": "My Polymer Experiment",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "paper-elements": "Polymer/paper-elements#master",
+    "core-elements": "Polymer/core-elements#master",
+    "google-map": "PolymerLabs/google-map#~0.3.0"
+  }
+}

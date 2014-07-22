@@ -1,0 +1,149 @@
+<link rel="import" href="bower_components/font-roboto/roboto.html">
+<link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
+
+<polymer-element name="x-card" attributes="zHover" on-mouseover="{{onMouseOver}}" on-mouseout="{{onMouseOut}}">
+  <template>
+    <style>
+      :host {
+        display: block;
+        background: #F4DB33;
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+
+
+
+      polymer-next-selector { content: ':host header'; }
+      ::content header {
+        max-width: 1210px;
+        margin: 0 auto;
+        position: relative;
+      }
+      ::content header a{
+        z-index: 2;
+        position: relative;
+      }
+      ::content header a img{
+        position: relative;
+        top: -10px;
+        -webkit-user-drag: none;
+        -moz-user-select: none;
+        user-drag: none;
+      }
+      ::content header ul{
+        width: 70%;
+        position: absolute ;
+        top: 0;
+        right: 5px ;
+        bottom: auto;
+        text-align: right;
+        list-style: none;
+        z-index: 2;
+      }
+      ::content header ul li{
+        display: inline-block;
+        padding: 0 1rem;
+      }
+      ::content header ul li a{
+        color: #333333;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-family: Roboto;
+        font-weight: 400;
+      }
+      ::content header h5{
+        text-align: center;
+        font-family: Roboto;
+        font-size: 1.625rem;
+        color: #333333;
+        font-weight: 100;
+        margin-top: 4rem;
+      }
+      ::content .download{
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+      }
+      ::content .download a{
+        z-index: 2;
+        position: relative;
+        vertical-align: middle;
+        display: inline-block;
+      }
+      ::content .download .git{
+        display: inline-block;
+        padding: 0 25px;
+        margin-left: -4px;
+        vertical-align: middle;
+        line-height: 43px;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2;
+        font-family: Roboto;
+        position: relative;
+      }
+      ::content .download .git:before {
+        content: '$';
+        color: #fff;
+        font-family: Roboto;
+        position: relative;
+        left: -10px;
+      }
+      ::content .download .git input{
+        border: 0;
+        outline: 0;
+        width: 330px;
+        color: #FFF;
+        background: rgba(0, 0, 0, 0);
+      }
+
+      #cardcontent {
+        padding: 25px;
+      }
+
+      paper-ripple {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 250px;
+        color: white;
+      }
+    </style>
+    <content id="c" select="img"></content>
+    <div id="cardcontent"><content></content></div>
+    <template if="{{hasImage}}">
+      <paper-ripple class="recenteringTouch"></paper-ripple>
+    </template>
+    <paper-shadow target="{{}}" z="{{zReal}}" animated></paper-shadow>
+  </template>
+  <script>
+    Polymer('x-card', {
+      zHover: null,
+      hasImage: false,
+      publish: {
+        z: {value: 1, reflect: true},
+      },
+      ready: function() {
+        this.zReal = this.z;
+        this.hasImage = this.$.c.getDistributedNodes().length;
+      },
+      onMouseOver: function(e, detail, sender) {
+        if (this.zHover != null) {
+          this.zReal = this.zHover;
+        }
+      },
+      onMouseOut: function(e, detail, sender) {
+        if (this.zHover != null) {
+          this.zReal = this.z;
+        }
+      }
+    });
+  </script>
+</polymer-element>
+
