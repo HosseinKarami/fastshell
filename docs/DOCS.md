@@ -4,7 +4,7 @@
 FastShell utilises open source components running on the Terminal/command-line for it's workflow, you'll need to install Node and Gulp. Here's a walkthrough of how to get a project up and running in minutes. Once Node and Gulp are installed all future projects running Gulp are instant.
 
 1. Install [Node.js](http://nodejs.org/download), [Sass](http://sass-lang.com/tutorial.html) and [Git](http://git-scm.com) on your machine. If you're a Windows user you'll also need to install [Ruby](http://rubyinstaller.org/downloads).
-2. [Install Gulp](http://Gulpjs.com/) using `npm install -g Gulp`. You may need to use `sudo` in front of the Gulp install command to give it permissions.
+2. [Install Gulp](http://Gulpjs.com/) using `npm install -g gulp`. You may need to use `sudo` in front of the Gulp install command to give it permissions.
 3. Fork/Clone/Download the FastShell repository into your machine, you should hopefully see all the files and folders.
 4. Navigate to the `gulp-dev.command` file and double-click it. This will open the Terminal and install the necessary `node_modules` folder, which are FastShell's dependencies. The `gulp-dev.command` file includes a `sudo` prefix so you'll need to enter your password to install.
 5. The `gulp-dev.command` should install all the dependencies, which you can check back to see in your folder, and then run the commands associated with FastShell, and automatically open a new FastShell project running on `localhost:3002`.
@@ -15,7 +15,7 @@ cd "$(dirname "$0")"
 if [ ! -d node_modules ];then
     sudo npm install
 fi
-Gulp
+gulp
 ````
 
 ## How to use FastShell
@@ -57,7 +57,7 @@ It's pretty useful when used with a single browser, watching a CSS file for chan
 ### Extending Gulp tasks
 If you're including more Gulp tasks in your project, remember to use the `npm install <Gulp package> --save-dev` inside your Terminal so that it gets added to your `package.json` file for future dependencies.
 
-Add new tasks to either the default `Gulp` task at the `Gulpfile.js`:
+Add new tasks to either the default `gulp` task at the `gulpfile.js`:
 
 ## JavaScript
 FastShell comes with a single `scripts.js` to get you started, of course if you're building an AngularJS project or other type you're going to need to customise the structure, but this gets you started. The generic scripts file ships with an immediately-invoked function expression (IIFE):
