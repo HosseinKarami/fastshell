@@ -119,4 +119,4 @@ This is used on [travis-ci.org](http://travis-ci.org) for continuous integration
 
 ## Platform support
 
-FastShell runs on both Mac OS X, Linux and Windows. Automated command-line scripts are only supported on Mac OS X and Windows.
+FastShell runs on Mac OS X, Linux and Windows. Automated command-line scripts are only supported on Mac OS X and Windows.
