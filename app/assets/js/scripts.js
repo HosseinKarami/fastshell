@@ -4,7 +4,7 @@
  * https://HosseinKarami.github.io/fastshell
  * @author Hossein Karami
  * @version 1.0.3
- * Copyright 2014. MIT licensed.
+ * Copyright 2015. MIT licensed.
  */
 (function ($, window, document, undefined) {
 
