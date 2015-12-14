@@ -1,4 +1,7 @@
 language: node_js
 node_js:
+<<<<<<< HEAD
   - "0.11"
+=======
+>>>>>>> a25e99b5fa11235e4f7cdd8fef4c8db83b94502c
   - "0.10"

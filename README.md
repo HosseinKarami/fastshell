@@ -1,4 +1,8 @@
 # FastShell
+<<<<<<< HEAD
+=======
+[![Build Status](https://travis-ci.org/HosseinKarami/fastshell.png?branch=master)](https://travis-ci.org/HosseinKarami/fastshell)
+>>>>>>> a25e99b5fa11235e4f7cdd8fef4c8db83b94502c
 
 inspired by [FireShell](http://getfireshell.com)
 Fiercely quick front-end boilerplate and workflows.
@@ -6,6 +10,12 @@ Fiercely quick front-end boilerplate and workflows.
 The opinionated FastShell framework. Built for the modern developer. For teams and the individual, encouraging a better workflow. JavaScript task running, build processes, autominification and file concatenation, wrapped with an enhanced HTML5 boilerplated framework.
 
 * Source: [github.com/HosseinKarami/fastshell](http://github.com/HosseinKarami/fastshell)
+<<<<<<< HEAD
+=======
+* Documentation: [DOCS.md](https://github.com/HosseinKarami/fastshell/blob/master/DOCS.md)
+* HomePage: [Fastshell](https://HosseinKarami.github.io/fastshell)
+
+>>>>>>> a25e99b5fa11235e4f7cdd8fef4c8db83b94502c
 
 ## License
 
