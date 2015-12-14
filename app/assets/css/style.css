@@ -7,6 +7,9 @@
   .clear:after {
     clear: both; }
 
+* {
+  /*box-sizing: border-box;*/ }
+
 html, body {
   height: 100%;
   padding: 0;
@@ -22,8 +25,8 @@ body {
 
 @font-face {
   font-family: 'Font-Name';
-  src: url('../fonts/font-name.eot');
-  src: url('../fonts/font-name.eot?#iefix') format('embedded-opentype'), url('../fonts/font-name.woff') format('woff'), url('../fonts/font-name.ttf') format('truetype'), url('../fonts/font-name.svg#font-name') format('svg');
+  src: url("../fonts/font-name.eot");
+  src: url("../fonts/font-name.eot?#iefix") format("embedded-opentype"), url("../fonts/font-name.woff") format("woff"), url("../fonts/font-name.ttf") format("truetype"), url("../fonts/font-name.svg#font-name") format("svg");
   font-weight: normal;
   font-style: normal; }
 
@@ -48,33 +51,40 @@ body {
   text-shadow: none; }
 
 @media print {
-  @page {
-    margin: 0.5cm; }
-
   * {
     background: transparent !important;
     color: #000 !important;
     box-shadow: none !important;
     text-shadow: none !important; }
-  a, a:visited {
+  a,
+  a:visited {
     text-decoration: underline; }
   a[href]:after {
     content: " (" attr(href) ")"; }
   abbr[title]:after {
     content: " (" attr(title) ")"; }
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after {
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
     content: ""; }
-  pre, blockquote {
+  pre,
+  blockquote {
     border: 1px solid #999;
     page-break-inside: avoid; }
   thead {
     display: table-header-group; }
-  tr, img {
+  tr,
+  img {
     page-break-inside: avoid; }
   img {
     max-width: 100% !important; }
-  p, h2, h3 {
+  @page {
+    margin: 0.5cm; }
+  p,
+  h2,
+  h3 {
     orphans: 3;
     widows: 3; }
-  h2, h3 {
+  h2,
+  h3 {
     page-break-after: avoid; } }
