@@ -4,11 +4,11 @@
 
 .clear {
   *zoom: 1; }
-  .clear:after {
-    clear: both; }
+
+.clear:after {
+  clear: both; }
 
 * {
-<<<<<<< HEAD
   /*box-sizing: border-box;*/ }
 
 html, body {
@@ -19,8 +19,7 @@ html, body {
 body {
   font-family: 'RobotoDraft', 'Helvetica Neue', Helvetica, Arial;
   font-weight: 300;
-  background-color: #f1f1f3; }
-=======
+  background-color: #f1f1f3;
   box-sizing: border-box;
   font-smoothing: antialiased;
   text-rendering: optimizeLegibility; }
@@ -398,7 +397,6 @@ th {
   position: absolute;
   top: 50%;
   left: 50%; }
->>>>>>> a25e99b5fa11235e4f7cdd8fef4c8db83b94502c
 
 .nav ul {
   list-style: none; }
