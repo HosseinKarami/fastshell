@@ -24,7 +24,7 @@ var banner = [
 
 gulp.task('css', function () {
     return gulp.src('src/scss/style.scss')
-    .pipe(sass({errLogToConsole: true}))
+    .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer('last 4 version'))
     .pipe(gulp.dest('app/assets/css'))
     .pipe(cssnano())
