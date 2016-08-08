@@ -7,6 +7,7 @@ var gulp = require('gulp'),
     header  = require('gulp-header'),
     rename = require('gulp-rename'),
     cssnano = require('gulp-cssnano'),
+    sourcemaps = require('gulp-sourcemaps'),
     package = require('./package.json');
 
 
@@ -24,18 +25,21 @@ var banner = [
 
 gulp.task('css', function () {
     return gulp.src('src/scss/style.scss')
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer('last 4 version'))
     .pipe(gulp.dest('app/assets/css'))
     .pipe(cssnano())
     .pipe(rename({ suffix: '.min' }))
     .pipe(header(banner, { package : package }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('app/assets/css'))
     .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('js',function(){
   gulp.src('src/js/scripts.js')
+    .pipe(sourcemaps.init())
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(header(banner, { package : package }))
@@ -43,6 +47,7 @@ gulp.task('js',function(){
     .pipe(uglify())
     .pipe(header(banner, { package : package }))
     .pipe(rename({ suffix: '.min' }))
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('app/assets/js'))
     .pipe(browserSync.reload({stream:true, once: true}));
 });
